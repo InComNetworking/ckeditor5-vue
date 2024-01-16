@@ -16,18 +16,7 @@ if ( !Vue.version || !Vue.version.startsWith( '3.' ) ) {
 	);
 }
 
-export default {
-	/**
-	 * Installs the plugin, registering the `<ckeditor>` component.
-	 *
-	 * @param app The application instance.
-	 */
-	install( app: Vue.App ): void {
-		app.component( 'Ckeditor', CKEditorComponent );
-	},
-
-	component: CKEditorComponent
-};
+export default CKEditorComponent;
 
 declare module 'vue' {
   interface GlobalComponents {
