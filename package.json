@@ -1,5 +1,5 @@
 {
-  "name": "@ckeditor/ckeditor5-vue",
+  "name": "ckeditor5-vue",
   "version": "5.1.0",
   "main": "dist/ckeditor.js",
   "types": "dist/plugin.d.ts",
