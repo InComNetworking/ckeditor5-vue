@@ -20,7 +20,7 @@ module.exports = {
 
 		path: path.join( __dirname, 'dist' ),
 		filename: 'ckeditor.js',
-		libraryTarget: 'commonjs2',
+		libraryTarget: 'commonjs',
 		libraryExport: 'default'
 	},
 	experiments: {
