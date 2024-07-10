@@ -20,10 +20,12 @@ module.exports = {
 
 		path: path.join( __dirname, 'dist' ),
 		filename: 'ckeditor.js',
-		libraryTarget: 'commonjs',
+		libraryTarget: 'commonjs2',
 		libraryExport: 'default'
 	},
-
+	experiments: {
+    outputModule: true
+  },
 	optimization: {
 		minimizer: [
 			new TerserPlugin( {
