@@ -73,8 +73,8 @@ declare const _default: import("vue").DefineComponent<{
     onInput?: ((...args: any[]) => any) | undefined;
 }, {
     modelValue: string;
-    disabled: boolean;
     config: EditorConfig;
+    disabled: boolean;
     tagName: string;
     disableTwoWayDataBinding: boolean;
 }, {}>;

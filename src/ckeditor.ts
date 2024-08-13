@@ -71,6 +71,43 @@ export default defineComponent( {
 	},
 
 	watch: {
+		config(value) {
+			if ( this.instance ) {
+				this.instance.destroy();
+				this.instance = null;
+			}
+			const editorConfig: EditorConfig = Object.assign( {}, this.config );
+
+			if ( this.modelValue ) {
+				editorConfig.initialData = this.modelValue;
+			}
+
+			this.editor.create( this.$el, editorConfig )
+				.then( editor => {
+					// Save the reference to the instance for further use.
+					this.instance = markRaw( editor );
+
+					this.setUpEditorEvents();
+
+					// Synchronize the editor content. The #modelValue may change while the editor is being created, so the editor content has
+					// to be synchronized with these potential changes as soon as it is ready.
+					if ( this.modelValue !== editorConfig.initialData ) {
+						editor.data.set( this.modelValue );
+					}
+
+					// Set initial disabled state.
+					if ( this.disabled ) {
+						editor.enableReadOnlyMode( SAMPLE_READ_ONLY_LOCK_ID );
+					}
+
+					// Let the world know the editor is ready.
+					this.$emit( 'ready', editor );
+				} )
+				.catch( error => {
+					console.error( error );
+				} );
+		},
+
 		modelValue( value ) {
 			// Synchronize changes of #modelValue. There are two sources of changes:
 			//
